@@ -12,14 +12,22 @@ rays = []
 
 # initial ray
 r0 = ray()
+'''
 r0.r = np.array([0.5,0,0])
 r0.s = np.array([0,0,1])
+'''
+
+# spiral light
+r0.r = np.array([2*np.sqrt(3)/3,0,0])
+r0.s = np.array([0, 0.5, np.sqrt(3)/2])
+
+
 r0.eikonal = 0
 rays.append(r0)
 
 # calculation efficiency
 dt = 0.01
-Max_Steps = 1000
+Max_Steps = 4000
 
 for j in tqdm(range(0,Max_Steps)):
     A = dt*getD(rays[j].r)
@@ -35,11 +43,15 @@ for j in tqdm(range(0,Max_Steps)):
     rays.append(nextray)
 
 x = np.zeros(len(rays))
+y = np.zeros(len(rays))
 z = np.zeros(len(rays))
 
 for j in range(0,len(rays)):
     x[j] = rays[j].r[0]
+    y[j] = rays[j].r[1]
     z[j] = rays[j].r[2]
 
-plt.plot(z,x)
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+plt.plot(z,x,y)
 plt.show()
