@@ -1,5 +1,15 @@
 # Graded Index Media Ray Tracer
 
+
+
+## Example
+
+![picture1](1.png)
+
+![picture2](2.png)
+
+
+
 ## Run
 
 In command line, run “python main.py”
